@@ -1,0 +1,82 @@
+theory:
+  camb:
+    path: /mnt/home/project/chazarika.brenjit/greybody_redshift_dep/CAMB_custom
+    extra_args:
+      halofit_version: mead
+      bbn_predictor: PArthENoPE_880.2_standard.dat
+      lens_potential_accuracy: 1
+      num_massive_neutrinos: 1
+      nnu: 3.046
+      theta_H0_range:
+      - 20
+      - 100
+      use_grey_body_radiation: 1
+likelihood:
+  planck_2018_highl_plik.TTTEEE: {}
+  planck_2018_lowl.TT: {}
+  planck_2018_lowl.EE: {}
+  planck_2018_lensing.clik: {}
+  bao.sixdf_2011_bao: {}
+  bao.sdss_dr7_mgs: {}
+  bao.sdss_dr12_consensus_bao: {}
+params:
+  cosmomc_theta:
+    prior:
+      min: 0.0102
+      max: 0.0107
+    proposal: 5.0e-06
+    ref: 0.01041
+  ombh2:
+    prior:
+      min: 0.02
+      max: 0.024
+    proposal: 0.0001
+    ref: 0.0224
+  omch2:
+    prior:
+      min: 0.1
+      max: 0.14
+    proposal: 0.001
+    ref: 0.12
+  As:
+    prior:
+      min: 1.5e-09
+      max: 3.5e-09
+    proposal: 1.0e-10
+    ref: 2.1e-09
+  ns:
+    prior:
+      min: 0.9
+      max: 1.05
+    proposal: 0.005
+    ref: 0.965
+  tau:
+    prior:
+      min: 0.01
+      max: 0.1
+    proposal: 0.005
+    ref: 0.055
+  custom_emissivity:
+    prior:
+      min: 0.5
+      max: 1.5
+    proposal: 0.01
+    ref: 1.016
+    latex: \varepsilon_{\rm CMB}
+  transition_redshift:
+    prior:
+      min: 5.0
+      max: 50.0
+    proposal: 1.0
+    ref: 17.0
+    latex: z_t
+sampler:
+  mcmc:
+    max_samples: 1000000
+    learn_proposal: true
+    Rminus1_stop: 0.005
+    Rminus1_cl_stop: 0.2
+    max_tries: 800000
+    covmat: /mnt/home/project/chazarika.brenjit/greybody_redshift_dep/planck/chains/v4_fresh/run_emis_zdep_lensing_bao.covmat
+output: run_emis_zdep_lensing_bao
+packages_path: /mnt/home/project/chazarika.brenjit/greybody_redshift_dep/cobaya_packages
